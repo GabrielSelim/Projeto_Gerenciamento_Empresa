@@ -1,7 +1,6 @@
 ﻿using Projeto_Gabriel.Domain.Entity.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using Projeto_Gabriel.Domain.Entity.Validations;
 
 [Table("books")]
 public class Livros : BaseEntity
