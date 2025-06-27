@@ -20,8 +20,8 @@ namespace Projeto_Gabriel.Domain.Entity.GerenciamentoFinanceiro
         public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
 
 
-        // Propriedades de Navegação (Relações)
-        public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        //Entity Framework Relationships
+        public virtual ICollection<UsuarioGerenciamento> Usuarios { get; set; } = new List<UsuarioGerenciamento>();
         public virtual ICollection<Produto> Produtos { get; set; } = new List<Produto>();
         public virtual ICollection<Cliente> Clientes { get; set; } = new List<Cliente>();
         public virtual ICollection<Fornecedor> Fornecedores { get; set; } = new List<Fornecedor>();
