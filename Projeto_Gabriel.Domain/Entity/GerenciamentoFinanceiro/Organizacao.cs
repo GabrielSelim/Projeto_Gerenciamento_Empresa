@@ -21,7 +21,7 @@ namespace Projeto_Gabriel.Domain.Entity.GerenciamentoFinanceiro
 
 
         //Entity Framework Relationships
-        public virtual ICollection<UsuarioGerenciamento> Usuarios { get; set; } = new List<UsuarioGerenciamento>();
+        public virtual ICollection<ApplicationUser> Usuarios { get; set; } = new List<ApplicationUser>();
         public virtual ICollection<Produto> Produtos { get; set; } = new List<Produto>();
         public virtual ICollection<Cliente> Clientes { get; set; } = new List<Cliente>();
         public virtual ICollection<Fornecedor> Fornecedores { get; set; } = new List<Fornecedor>();

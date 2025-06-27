@@ -40,7 +40,7 @@ namespace Projeto_Gabriel.Domain.Entity.GerenciamentoFinanceiro
 
         // Entity Framework Relationships
         public virtual Organizacao Organizacao { get; set; }
-        public virtual UsuarioGerenciamento Usuario { get; set; }
+        public virtual ApplicationUser Usuario { get; set; }
         public virtual Cliente Cliente { get; set; }
         public virtual Fornecedor Fornecedor { get; set; }
     }
