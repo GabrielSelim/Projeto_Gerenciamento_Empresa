@@ -4,11 +4,6 @@ using Projeto_Gabriel.Domain.ServiceInterface;
 using Projeto_Gabriel.Domain.Service;
 using Microsoft.Extensions.DependencyInjection;
 using Projeto_Gabriel.Infrastructure.Services.Validation;
-using Projeto_Gabriel.Application.BusinessInterface;
-using Projeto_Gabriel.Application.Business;
-using Projeto_Gabriel.Domain.Entity.Logas;
-using Projeto_Gabriel.Domain.Service.Logas;
-using Projeto_Gabriel.Application.Business.Logas;
 using Projeto_Gabriel.Application.BusinessInterface.Logas;
 
 
@@ -21,9 +16,6 @@ namespace Projeto_Gabriel.Application.Extensions
             services.AddTransient<ITokenService, TokenService>();
             services.AddTransient<IEntityValidationService<Livros>, LivrosValidationService>();
 
-            //Logs
-            services.AddTransient<IEntityValidationService<LogEntry>, LogsValidationService>();
-
             return services;
         }
 
@@ -31,15 +23,6 @@ namespace Projeto_Gabriel.Application.Extensions
         {
             //Curso
             services.AddScoped<ILivroBussines, LivroBussinesImplementacao>();
-
-            //Login
-            services.AddScoped<ILoginBussines, LoginBussinesImplementation>();
-            services.AddScoped<IUsuarioBusiness, UsuarioBusinessImplementacao>();
-
-
-            //Logs
-            services.AddScoped<ILogBusiness, LogBusinessImplementacao>();
-
 
             return services;
         }
