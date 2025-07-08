@@ -3,7 +3,6 @@ using Projeto_Gabriel.Domain.Entity.Base;
 using Projeto_Gabriel.Domain.Entity.Validations;
 using Projeto_Gabriel.Domain.Generic;
 using Projeto_Gabriel.Domain.ServiceInterface;
-using Projeto_Gabriel.Infrastructure.Services.Validation;
 using Projeto_Gabriel.Model.Context;
 using System.ComponentModel.DataAnnotations;
 
@@ -17,7 +16,6 @@ namespace Projeto_Gabriel.Infrastructure.Repositorys.Generic
 
         public GenericRepositoryBase(MySQLContext context)
         {
-            _validationService = ValidationServiceFactory.GetValidationService<T>();
             _context = context;
             dataset = _context.Set<T>();
         }

@@ -1,6 +1,5 @@
 ﻿using Projeto_Gabriel.Domain.Entity.GerenciamentoFinanceiro;
 using Projeto_Gabriel.Domain.Generic;
-using Projeto_Gabriel.Repository.Generic;
 
 namespace Projeto_Gabriel.Domain.RepositoryInterface.GerenciamentoFinanceiro
 {

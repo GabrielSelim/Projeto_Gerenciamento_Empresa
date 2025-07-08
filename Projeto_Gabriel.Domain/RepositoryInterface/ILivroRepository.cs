@@ -1,9 +1,8 @@
-﻿using Projeto_Gabriel.Domain.Entity;
-using Projeto_Gabriel.Repository.Generic;
+﻿using Projeto_Gabriel.Domain.Generic;
 
 namespace Projeto_Gabriel.Domain.RepositoryInterface
 {
-    public interface ILivroRepository : IRepository<Livros>
+    public interface ILivroRepository : IRepositoryBase<Livros>
     {
         Livros Desativar(long id);
 

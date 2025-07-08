@@ -4,8 +4,6 @@ using Projeto_Gabriel.Domain.ServiceInterface;
 using Projeto_Gabriel.Domain.Service;
 using Microsoft.Extensions.DependencyInjection;
 using Projeto_Gabriel.Infrastructure.Services.Validation;
-using Projeto_Gabriel.Application.BusinessInterface.Logas;
-
 
 namespace Projeto_Gabriel.Application.Extensions
 {

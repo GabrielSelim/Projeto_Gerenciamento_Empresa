@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Projeto_Gabriel.Domain.Entity.Logas;
+using Projeto_Gabriel.Domain.Entity.GerenciamentoFinanceiro;
 
 namespace Projeto_Gabriel.Model.Context
 {
@@ -14,8 +14,13 @@ namespace Projeto_Gabriel.Model.Context
 
         public DbSet<Livros> Livros { get; set; }
 
-        //Logs
-        public DbSet<LogEntry> Logs { get; set; }
+        //Gerenciamento Financeiro
+        public DbSet<Organizacao> Organizacoes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Transacao> Transacoes { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

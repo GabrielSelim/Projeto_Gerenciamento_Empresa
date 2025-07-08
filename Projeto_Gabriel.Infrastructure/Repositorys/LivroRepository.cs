@@ -1,11 +1,10 @@
-﻿using Projeto_Gabriel.Domain.Entity;
-using Projeto_Gabriel.Domain.RepositoryInterface;
+﻿using Projeto_Gabriel.Domain.RepositoryInterface;
+using Projeto_Gabriel.Infrastructure.Repositorys.Generic;
 using Projeto_Gabriel.Model.Context;
-using Projeto_Gabriel.Repository.Generic;
 
 namespace Projeto_Gabriel.Infrastructure.Repositorys
 {
-    public class LivroRepository : GenericRepository<Livros>, ILivroRepository
+    public class LivroRepository : GenericRepositoryBase<Livros>, ILivroRepository
     {
         public LivroRepository(MySQLContext context) : base(context)
         {
