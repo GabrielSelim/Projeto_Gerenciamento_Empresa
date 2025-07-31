@@ -15,7 +15,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
     ports:
-      - 3308:3306
+      - 3406:3306
     networks:
       - gsystem-network
     volumes:
@@ -31,8 +31,8 @@ services:
       ASPNETCORE_ENVIRONMENT: Production
       MYSQLCONNECTION__MYSQLCONNECTIONSTRING: "Server=db;DataBase=${MYSQL_DATABASE};Uid=${MYSQL_USER};Pwd=${MYSQL_PASSWORD};SslMode=none;"
     ports:
-      - 44300:8080
-      - 4430:8081
+      - 5000:8080
+      - 5001:8081
     depends_on:
       - db
     networks:
