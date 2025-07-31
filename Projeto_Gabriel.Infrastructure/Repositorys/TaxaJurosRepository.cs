@@ -28,7 +28,8 @@ namespace Projeto_Gabriel.Infrastructure.Repositorys
                 if (!string.Equals(usuario.Role, "Admin", StringComparison.OrdinalIgnoreCase))
                     throw new UnauthorizedAccessException("Apenas usuários administradores podem atualizar a taxa de juros.");
 
-                var taxaAtual = _context.TaxaJuros.FirstOrDefault(t => t.Id == taxaJuros.Id);
+                var taxaAtual = _context.TaxaJuros.FirstOrDefault();
+
                 if (taxaAtual == null)
                     throw new KeyNotFoundException("Taxa de juros não encontrada.");
 
@@ -38,15 +39,15 @@ namespace Projeto_Gabriel.Infrastructure.Repositorys
 
                 return taxaAtual;
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException)
             {
                 throw;
             }
-            catch (UnauthorizedAccessException ex)
+            catch (UnauthorizedAccessException)
             {
                 throw;
             }
-            catch (KeyNotFoundException ex)
+            catch (KeyNotFoundException)
             {
                 throw;
             }

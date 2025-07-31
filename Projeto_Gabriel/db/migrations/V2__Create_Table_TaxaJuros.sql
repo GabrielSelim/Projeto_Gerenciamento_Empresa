@@ -1,0 +1,6 @@
+CREATE TABLE `taxaJuros` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`Juros` decimal(65,2) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -10,6 +10,7 @@ namespace Projeto_Gabriel.Application.Extensions
         {
             // Adicionando os Enrichers existentes
             filterOptions.ContentResponseEnricherList.Add(new LivroEnricher());
+            filterOptions.ContentResponseEnricherList.Add(new TaxaJurosEnricher());
 
             return services;
         }

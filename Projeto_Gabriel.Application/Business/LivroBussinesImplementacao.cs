@@ -2,15 +2,12 @@
 using Projeto_Gabriel.Application.Dto;
 using Projeto_Gabriel.Application.Exceptions;
 using Projeto_Gabriel.Application.Hypermedia.Utils;
-using Projeto_Gabriel.Domain.Entity;
 using Projeto_Gabriel.Domain.RepositoryInterface;
-using System.ComponentModel.DataAnnotations;
 
 namespace Projeto_Gabriel.Bussines.Implementacoes
 {
     public class LivroBussinesImplementacao : ILivroBussines
     {
-
         private readonly ILivroRepository _livroRepository;
         private readonly LivroConverter _converter;
 

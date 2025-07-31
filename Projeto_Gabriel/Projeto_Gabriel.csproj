@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="db\dataset\" />
     <Folder Include="UploadDir\" />
   </ItemGroup>
 
