@@ -23,21 +23,18 @@ using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var appName = "Projeto de Gabriel Sanz";
+var appName = "API - Para o ...";
 var appVersion = "v1";
-var descricao = "Está API foi implementada por mim Gabriel Sanz a fim de demonstrar meus conhecimentos em RESTFul APi";
+var descricao = "API Desenvolvida por Gabriel Sanz para o sistema ...";
 
-// Carrega as configurações do appsettings.json e do arquivo específico do ambiente
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
-// Transformando os End-Point em letras minúsculas
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
-// Configurando as Validações do Token
 var tokenConfigurations = new TokenConfiguration();
 new ConfigureFromConfigurationOptions<TokenConfiguration>(
     builder.Configuration.GetSection("TokenConfiguration"))
@@ -90,12 +87,10 @@ builder.Services.AddAuthorization(auth =>
         .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
         .RequireAuthenticatedUser().Build());
 
-    // Políticas baseadas em roles
     auth.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
     auth.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
 });
 
-// Inserindo o Cors
 builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>
 {
     builder.AllowAnyOrigin()
@@ -103,19 +98,16 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>
     .AllowAnyHeader();
 }));
 
-// Add services to the container.
 builder.Services.AddControllers();
 
-// Configurando o API Versioning
 builder.Services.AddApiVersioning(options =>
 {
-    options.AssumeDefaultVersionWhenUnspecified = true; // Assume uma versão padrão se não for especificada
-    options.DefaultApiVersion = new ApiVersion(1, 0); // Define a versão padrão como 1.0
-    options.ReportApiVersions = true; // Inclui informações de versão no cabeçalho da resposta
-    options.ApiVersionReader = new UrlSegmentApiVersionReader(); // Lê a versão da URL (v{version})
+    options.AssumeDefaultVersionWhenUnspecified = true; 
+    options.DefaultApiVersion = new ApiVersion(1, 0); 
+    options.ReportApiVersions = true; 
+    options.ApiVersionReader = new UrlSegmentApiVersionReader(); 
 });
 
-// Configurando o Swagger
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
@@ -132,7 +124,6 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 
-    // Configuração de segurança para JWT
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -166,7 +157,6 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddSwaggerExamplesFromAssemblyOf<ErrorResponseExample>();
 
-// Configuração do Banco de Dados
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 
 builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(
@@ -186,32 +176,24 @@ builder.Services.AddMvc(options =>
     options.FormatterMappings.SetMediaTypeMappingForFormat("json", "application/json");
 }).AddXmlSerializerFormatters();
 
-// Configurando HyperMedia
 var filterOptions = new HyperMediaFilterOptions();
 builder.Services.AddEnrichers(filterOptions);
 builder.Services.AddSingleton(filterOptions);
 
-// Dependency Injection 
 builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-// Add Business Services
 builder.Services.AddBusinessServices();
 
-// Add Services
 builder.Services.AddServices();
 
-// Add Repository
 builder.Services.AddInfrastructureRepositories();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
 
-// Adicionando o Cors
 app.UseCors();
 
-// Adicionando o Swagger
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
