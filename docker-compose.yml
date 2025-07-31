@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   db:
-    image: projeto_gabriel-db
+    image: projeto-istatus-pat-db
     command: mysqld --default-authentication-plugin=mysql_native_password
     restart: always
     build:
@@ -22,7 +22,7 @@ services:
       - db_data:/var/lib/mysql
 
   projeto_gabriel:
-    image: projeto_gabriel
+    image: projeto-istatus-pat
     build:
       context: .
       dockerfile: Projeto_Gabriel/Dockerfile
@@ -35,16 +35,6 @@ services:
       - 4430:8081
     depends_on:
       - db
-    networks:
-      - gsystem-network
-
-  client:
-    image: projeto_gabriel-client
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    ports:
-      - 3000:80
     networks:
       - gsystem-network
 
