@@ -23,9 +23,9 @@ using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var appName = "API - Para o ...";
+var appName = "API - Para o Istatus Pay";
 var appVersion = "v1";
-var descricao = "API Desenvolvida por Gabriel Sanz para o sistema ...";
+var descricao = "API Desenvolvida por Gabriel Sanz para o sistema Istatus Pay";
 
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
