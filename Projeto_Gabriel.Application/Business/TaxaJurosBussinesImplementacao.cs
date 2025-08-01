@@ -11,14 +11,11 @@ namespace Projeto_Gabriel.Application.Business
         private readonly TaxaJurosConverterRetorno _converterRetorno;
         private readonly TaxaJurosConverter _converter;
 
-        public TaxaJurosBussinesImplementacao(
-            ITaxaJurosRepository taxaJurosRepository,
-            TaxaJurosConverter converter,
-            TaxaJurosConverterRetorno converterRetorno)
+        public TaxaJurosBussinesImplementacao(ITaxaJurosRepository taxaJurosRepository)
         {
             _taxaJurosRepository = taxaJurosRepository;
-            _converter = converter;
-            _converterRetorno = converterRetorno;
+            _converter = new TaxaJurosConverter();
+            _converterRetorno = new TaxaJurosConverterRetorno();
         }
 
         public TaxaJurosDboRetorno AtualizarTaxaJuros(TaxaJurosDboEntrada taxaJuros, long usuarioid)
@@ -27,6 +24,14 @@ namespace Projeto_Gabriel.Application.Business
             {
                 if (taxaJuros == null)
                     throw new ArgumentNullException(nameof(taxaJuros), "Taxa de juros não pode ser nula.");
+
+                if (taxaJuros.Juros == 0)
+                    throw new ArgumentException("Taxa de juros não pode ser igual a 0.");
+
+                if (taxaJuros.Juros < 0 || taxaJuros.Juros > 100)
+                    throw new ArgumentException("A taxa de juros deve estar entre 0.01 e 99.99.");
+
+                taxaJuros.Juros = Math.Round(taxaJuros.Juros, 2, MidpointRounding.AwayFromZero);
 
                 var taxaEntity = _converter.Parse(taxaJuros);
 
@@ -48,10 +53,6 @@ namespace Projeto_Gabriel.Application.Business
             catch (KeyNotFoundException ex)
             {
                 throw new KeyNotFoundException("Taxa de juros ou usuário não encontrado.", ex);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro ao atualizar a taxa de juros.", ex);
             }
         }
 

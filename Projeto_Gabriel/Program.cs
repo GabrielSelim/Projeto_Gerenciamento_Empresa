@@ -190,6 +190,32 @@ builder.Services.AddInfrastructureRepositories();
 
 var app = builder.Build();
 
+app.Use(async (context, next) =>
+{
+    var originalBody = context.Response.Body;
+    using var memStream = new MemoryStream();
+    context.Response.Body = memStream;
+
+    await next();
+
+    if (context.Response.StatusCode == 400 && context.Response.ContentType != null && context.Response.ContentType.Contains("application/problem+json"))
+    {
+        context.Response.Body = originalBody;
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = 400;
+
+        var mensagem = "O valor informado para o campo Juros é inválido. Informe um número decimal usando ponto, por exemplo: 5.8 .";
+
+        await context.Response.WriteAsJsonAsync(new { mensagem });
+    }
+    else
+    {
+        memStream.Seek(0, SeekOrigin.Begin);
+        await memStream.CopyToAsync(originalBody);
+        context.Response.Body = originalBody;
+    }
+});
+
 app.UseHttpsRedirection();
 
 app.UseCors();
