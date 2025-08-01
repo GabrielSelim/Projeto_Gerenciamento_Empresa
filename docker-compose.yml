@@ -19,7 +19,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
-  projeto_gabriel:
+  projeto_gabriel_statuspay:
     image: projeto-istatus-pat
     build:
       context: .
