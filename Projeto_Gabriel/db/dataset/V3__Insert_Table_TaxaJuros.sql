@@ -1,0 +1,1 @@
+INSERT INTO taxaJuros (Juros) VALUES (5.25);
