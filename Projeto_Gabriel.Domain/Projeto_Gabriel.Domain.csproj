@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Projeto_Gabriel.Shared\Projeto_Gabriel.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entity\Enum\" />
+  </ItemGroup>
+
 </Project>

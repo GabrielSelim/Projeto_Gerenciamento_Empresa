@@ -10,9 +10,6 @@ namespace Projeto_Gabriel.Infrastructure.Services.Validation
     {
         public static IEntityValidationService<T> GetValidationService<T>()
         {
-            if (typeof(T) == typeof(Livros))
-                return (IEntityValidationService<T>)new LivrosValidationService();
-
             if (typeof(T) == typeof(Usuario))
                 return (IEntityValidationService<T>)new UsuarioValidationService();
 

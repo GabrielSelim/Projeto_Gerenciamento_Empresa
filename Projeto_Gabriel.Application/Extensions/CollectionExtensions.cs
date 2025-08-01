@@ -18,7 +18,6 @@ namespace Projeto_Gabriel.Application.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddTransient<ITokenService, TokenService>();
-            services.AddTransient<IEntityValidationService<Livros>, LivrosValidationService>();
             services.AddTransient<IEntityValidationService<Usuario>, UsuarioValidationService>();
             services.AddTransient<IEntityValidationService<TaxaJuros>, TaxaJurosService>();
 
@@ -30,8 +29,6 @@ namespace Projeto_Gabriel.Application.Extensions
 
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
         {
-
-            services.AddScoped<ILivroBussines, LivroBussinesImplementacao>();
             services.AddScoped<ITaxaJurosBussines, TaxaJurosBussinesImplementacao>();
 
             //Login

@@ -9,7 +9,6 @@ namespace Projeto_Gabriel.Application.Extensions
         public static IServiceCollection AddEnrichers(this IServiceCollection services, HyperMediaFilterOptions filterOptions)
         {
             // Adicionando os Enrichers existentes
-            filterOptions.ContentResponseEnricherList.Add(new LivroEnricher());
             filterOptions.ContentResponseEnricherList.Add(new TaxaJurosEnricher());
 
             return services;

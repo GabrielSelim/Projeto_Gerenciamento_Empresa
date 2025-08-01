@@ -12,7 +12,6 @@ namespace Projeto_Gabriel.Infrastructure.Extensions
         public static IServiceCollection AddInfrastructureRepositories(this IServiceCollection services)
         {
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            services.AddScoped<ILivroRepository, LivroRepository>();
 
             //Logs
             services.AddScoped<ILogRepository, LogRepository>();

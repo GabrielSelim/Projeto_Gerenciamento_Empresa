@@ -13,7 +13,6 @@ namespace Projeto_Gabriel.Model.Context
 
         public MySQLContext(DbContextOptions<MySQLContext> options) : base(options){}
 
-        public DbSet<Livros> Livros { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
         //TaxaJuros
